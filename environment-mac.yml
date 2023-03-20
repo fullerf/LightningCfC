@@ -1,0 +1,39 @@
+# This environment work on mac m1
+name:  cfc-dev
+
+channels:
+  - pytorch
+  - conda-forge
+
+dependencies:
+  - pip
+  - python >= 3.9, < 3.11
+  - pandas >= 1.2.4
+  - numpy <1.24.0
+  - pytables >= 3.6.1 # a cure for hdf5 related illnesses on M1 macs
+  - pytorch >= 1.13.0
+  - torchvision
+#  - pytorch-cuda=11.6
+  - pytorch-lightning
+  # stuff for digenesis integration
+  - attrs>=21.4.0
+  - cattrs>=1.10.0
+  - pyarrow>=8.0.0
+  - fsspec>=2022.5.0
+  - pyyaml>=6.0
+  # dependencies for the papermill + jupyter notebook CLI workflow
+  - jupyter
+  - papermill
+  - jupytext
+  - nbconvert
+  # testing and CI tools
+  - nox>=2019.8.20
+  - packaging>=20.0
+  # packaging
+  - twine
+  - build
+
+  - pip:
+    - matplotlib < 3.7 # pip install is thinner than conda one. < 3.7 is because of https://github.com/scverse/scanpy/issues/2411
+    - seaborn
+    - -e ./ 
